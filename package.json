@@ -51,6 +51,7 @@
     "react": "*",
     "react-dom": "*",
     "react-icons": "^3.7.0",
+    "semantic-ui-icon": "^2.3.3",
     "semantic-ui-react": "^0.88.0"
   }
 }

@@ -5571,6 +5571,11 @@ selfsigned@^1.9.1:
   dependencies:
     node-forge "0.7.5"
 
+semantic-ui-icon@^2.3.3:
+  version "2.3.3"
+  resolved "https://registry.yarnpkg.com/semantic-ui-icon/-/semantic-ui-icon-2.3.3.tgz#b0beb7e4b541a13eb49a8039626723ab5393b95c"
+  integrity sha512-TuO265ICYGoNPs0rjanqDlrx8hfcpl4MMv92OUwFCbDwee4nGj8+Dv+i1RvkPPr0gO565G/0EKs8vF4wwhMMBw==
+
 semantic-ui-react@^0.88.0:
   version "0.88.0"
   resolved "https://registry.yarnpkg.com/semantic-ui-react/-/semantic-ui-react-0.88.0.tgz#7048aad80190b8196efc6e77babde21c50557b83"

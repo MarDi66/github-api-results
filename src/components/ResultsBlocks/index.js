@@ -2,15 +2,11 @@ import React from 'react'
 import { Card, Image } from 'semantic-ui-react';
 import { FaListUl, FaGripHorizontal } from 'react-icons/fa'
 
-const ResultsBlocks = ({data, handleDisplayBlock, handleDisplayList}) => (
-    <div>
-    <FaListUl size={25} onClick={() => handleDisplayList()} />
-    <span>ou</span>
-    <FaGripHorizontal size={25} onClick={() => handleDisplayBlock()} />
+const ResultsBlocks = ({data, handlePointerEnter}) => (
   <Card.Group className="card-group">
   
 
-  {data.map(card => <Card key={card.id} className='card'>
+  {data.map(card => <Card onPointerEnter={(event) => handlePointerEnter(event)} key={card.id} className='card'>
     <Card.Content>
         <Image
         className="image"
@@ -27,7 +23,6 @@ const ResultsBlocks = ({data, handleDisplayBlock, handleDisplayList}) => (
     </Card>)}
 
   </Card.Group>
-  </div>
 )
 
 export default ResultsBlocks;
@@ -46,3 +41,7 @@ export default ResultsBlocks;
 //         </Card.Description>
 //       </Card.Content>
 //     </Card>
+
+// <FaListUl size={25} onClick={() => handleDisplayList()} />
+//     <span>ou</span>
+//     <FaGripHorizontal size={25} onClick={() => handleDisplayBlock()} />

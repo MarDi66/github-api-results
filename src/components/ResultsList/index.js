@@ -1,33 +1,22 @@
 import React from 'react'
-import { Card, Image } from 'semantic-ui-react';
-import { FaListUl, FaGripHorizontal } from 'react-icons/fa'
+import { List, Image } from 'semantic-ui-react'
 
-const ResultsList = ({data, handleDisplayBlock, handleDisplayList}) => (
-    <div>
-    <FaListUl size={25} onClick={() => handleDisplayList()} />
-    <span>ou</span>
-    <FaGripHorizontal size={25} onClick={() => handleDisplayBlock()} />
-  <Card.Group className="card-group">
-  
+const ResultsList = ({data}) => (
+  <List>
 
-  {data.map(card => <Card key={card.id} className='card-list'>
-    <Card.Content>
-        <Image
-        className="image"
-        floated='right'
-        size='mini'
-        src={card.owner.avatar_url}
-        />
-        <Card.Header>{card.name}</Card.Header>
-        <Card.Meta><strong>Développeur : </strong>{card.owner.login}</Card.Meta>
-        <Card.Description>
-            {card.description}
-        </Card.Description>
-        </Card.Content>
-    </Card>)}
-
-  </Card.Group>
-  </div>
+  {data.map(card => 
+    <List.Item key={card.id} className='card-list' >
+      <Image avatar src={card.owner.avatar_url} />
+      <List.Content>
+        <List.Header as='a'>{card.name}</List.Header>
+        <List.Description>
+          {card.description}
+        </List.Description>
+      </List.Content>
+    </List.Item> )}
+    
+    
+  </List>
 )
 
 export default ResultsList;
@@ -46,3 +35,26 @@ export default ResultsList;
 //         </Card.Description>
 //       </Card.Content>
 //     </Card>
+
+// import React from 'react'
+// import { List, Image } from 'semantic-ui-react'
+
+// const ListExampleImage = () => (
+//   <List>
+
+//   {data.map(card => 
+//     <List.Item key={card.id} className='card' >
+//       <Image avatar src={card.owner.avatar_url} />
+//       <List.Content>
+//         <List.Header as='a'>{card.name}</List.Header>
+//         <List.Description>
+//           {card.description}
+//         </List.Description>
+//       </List.Content>
+//     </List.Item> )}
+    
+    
+//   </List>
+// )
+
+// export default ListExampleImage

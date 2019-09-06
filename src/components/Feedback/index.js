@@ -1,7 +1,7 @@
 import React from 'react'
 import { Message } from 'semantic-ui-react'
 
-const Feedback = ({counter, value,}) => {
+const Feedback = ({counter, value}) => {
 
     let message = ''
     switch (counter) {

@@ -1,13 +1,12 @@
 import React from 'react'
 import { Button } from 'semantic-ui-react'
-import { FaListUl, FaGripHorizontal } from 'react-icons/fa'
 
-const ConditionalButton = () => (
-  <Button.Group>
-    <Button>List</Button>
+const ButtonExampleConditionals = ({handleDisplayBlock, handleDisplayList}) => (
+  <Button.Group className='conditionButton'>
+    <Button onClick={() => handleDisplayList()}>List</Button>
     <Button.Or />
-    <Button positive>Grid</Button>
+    <Button positive onClick={() => handleDisplayBlock()}>Grid</Button>
   </Button.Group>
 )
 
-export default ConditionalButton
+export default ButtonExampleConditionals
