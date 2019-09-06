@@ -27,7 +27,10 @@ export default class App extends React.Component {
     data: [],
     searchValue: '',
     display: 'block',
-    isLoading: false
+    isLoading: false,
+    gridPositive: true,
+    listPositive: false,
+    filteredData: []
   }
 
   componentDidMount() {
@@ -39,21 +42,6 @@ export default class App extends React.Component {
       })
     })
   }
-
-  // updateSearch = (event) => {
-  //   console.log('updateSearch')
-  //   event.preventDefault()
-  //   if(this.state.searchValue.length > 0) {
-  //     const updatedData = this.state.data.filter(card => card.name == this.state.searchValue)
-  //   this.setState({
-  //     data: updatedData
-  //   })
-  //   } else {
-  //     this.setState({
-  //       data: data
-  //     })
-  //   }
-  // }
 
   updateSearch = (event) => {
     console.log('updateSearch')
@@ -68,8 +56,6 @@ export default class App extends React.Component {
       })
     })
   }
-
-  isLoading = false
 
   updateInputValue = (event) => {
     this.setState({
@@ -89,8 +75,18 @@ export default class App extends React.Component {
     })
   }
 
-  handlePointerEnter = (event) => {
-  console.log(event.currentTarget.getAttribute('class'))
+  handlePointerEnter = (cardId) => {
+    return () => {
+      document.querySelector('.hiddenDiv').style.display = 'unset'
+      const filteredData = this.state.data.filter(card => card.id == cardId)
+      this.setState({
+        filteredData
+      })
+    }
+  }
+
+  handlePointerLeave = () => {
+    document.querySelector('.hiddenDiv').style.display = 'none'
   }
 
   render() {
@@ -104,9 +100,9 @@ export default class App extends React.Component {
         {this.state.searchValue.length < 1 && <WelcomeFeedback />}
         {this.state.searchValue.length > 0 && <Feedback counter={counter} value={this.state.searchValue} state={this.state}/>}
         
-        <ConditionalButton handleDisplayBlock={this.handleDisplayBlock} handleDisplayList={this.handleDisplayList} />
+        <ConditionalButton handleDisplayBlock={this.handleDisplayBlock} handleDisplayList={this.handleDisplayList} gridPositive={this.state.gridPositive} listPositive={this.state.listPositive} />
 
-        {this.state.display === 'block' && <ResultsBlocks handlePointerEnter={this.handlePointerEnter} data={this.state.data} handleDisplayBlock={this.handleDisplayBlock} handleDisplayList={this.handleDisplayList} />}
+        {this.state.display === 'block' && <ResultsBlocks handlePointerEnter={this.handlePointerEnter} handlePointerLeave={this.handlePointerLeave} data={this.state.data} handleDisplayBlock={this.handleDisplayBlock} handleDisplayList={this.handleDisplayList} filteredData={this.state.filteredData} />}
         {this.state.display === 'list' && <ResultsList data={this.state.data} handleDisplayBlock={this.handleDisplayBlock} handleDisplayList={this.handleDisplayList} />}
       </div>
     )

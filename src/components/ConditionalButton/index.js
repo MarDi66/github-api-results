@@ -1,11 +1,11 @@
 import React from 'react'
 import { Button } from 'semantic-ui-react'
 
-const ButtonExampleConditionals = ({handleDisplayBlock, handleDisplayList}) => (
+const ButtonExampleConditionals = ({handleDisplayBlock, handleDisplayList, gridPositive, listPositive}) => (
   <Button.Group className='conditionButton'>
-    <Button onClick={() => handleDisplayList()}>List</Button>
+    <Button positive={listPositive} onClick={(event) => handleDisplayList(event)}>List</Button>
     <Button.Or />
-    <Button positive onClick={() => handleDisplayBlock()}>Grid</Button>
+    <Button positive={gridPositive} onClick={(event) => handleDisplayBlock(event)}>Grid</Button>
   </Button.Group>
 )
 

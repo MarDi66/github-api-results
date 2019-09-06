@@ -2,11 +2,13 @@ import React from 'react'
 import { Card, Image } from 'semantic-ui-react';
 import { FaListUl, FaGripHorizontal } from 'react-icons/fa'
 
-const ResultsBlocks = ({data, handlePointerEnter}) => (
+const ResultsBlocks = ({data, handlePointerEnter, handlePointerLeave, filteredData}) => (
   <Card.Group className="card-group">
-  
+  <div className='hiddenDiv'>
+    {filteredData.map(i => <p>{i.description}</p>)}
+  </div>
 
-  {data.map(card => <Card onPointerEnter={(event) => handlePointerEnter(event)} key={card.id} className='card'>
+  {data.map(card => <Card onPointerEnter={handlePointerEnter(card.id)} onPointerLeave={(event) => handlePointerLeave(event)} key={card.id} className='card'>
     <Card.Content>
         <Image
         className="image"
