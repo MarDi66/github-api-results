@@ -2,10 +2,10 @@ import React from 'react'
 import { List, Image } from 'semantic-ui-react'
 
 const ResultsList = ({data}) => (
-  <List>
+  <List className='list-container' divided relaxed>
 
   {data.map(card => 
-    <List.Item key={card.id} className='card-list' >
+    <List.Item key={card.id} className='card-list' onClick={() => window.open(card.html_url)} >
       <Image avatar src={card.owner.avatar_url} />
       <List.Content>
         <List.Header as='a'>{card.name}</List.Header>

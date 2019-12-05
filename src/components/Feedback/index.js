@@ -1,7 +1,8 @@
 import React from 'react'
 import { Message } from 'semantic-ui-react'
+import ConditionnalButton from '../ConditionalButton'
 
-const Feedback = ({counter, value}) => {
+const Feedback = ({counter, value, handleDisplayBlock, handleDisplayList, display}) => {
 
     let message = ''
     switch (counter) {
@@ -12,13 +13,14 @@ const Feedback = ({counter, value}) => {
             message = `La recherche pour ${value} a donné 1 résultat`;
             break;
         default:
-            message = `La recherche pour ${value} a donné ${counter} résultat`
+            message = `La recherche pour ${value} a donné ${counter} résultats`
     }
     return (
   <Message className="feedback">
     <p>
       {message}
     </p>
+    <ConditionnalButton handleDisplayBlock={handleDisplayBlock} handleDisplayList={handleDisplayList} display={display} />
   </Message>
 )}
 

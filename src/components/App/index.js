@@ -44,12 +44,10 @@ export default class App extends React.Component {
   }
 
   updateSearch = (event) => {
-    console.log('updateSearch')
     event.preventDefault()
     axios.get('https://api.github.com/search/repositories?q='+ this.state.searchValue +'&sort=stars&order=desc', this.setState({isLoading: true}))
     .then(res => {
       const updatedData = res.data.items
-      console.log(updatedData)
       this.setState({
         data: updatedData,
         isLoading: false
@@ -58,9 +56,9 @@ export default class App extends React.Component {
   }
 
   updateInputValue = (event) => {
-    this.setState({
-      searchValue: event.currentTarget.value
-    })
+      this.setState({
+        searchValue: event.currentTarget.value
+      })
   }
 
   handleDisplayBlock = () => {
@@ -75,7 +73,7 @@ export default class App extends React.Component {
     })
   }
 
-  handlePointerEnter = (cardId) => {
+  /*handlePointerEnter = (cardId) => {
     return () => {
       document.querySelector('.hiddenDiv').style.display = 'unset'
       const filteredData = this.state.data.filter(card => card.id == cardId)
@@ -87,7 +85,7 @@ export default class App extends React.Component {
 
   handlePointerLeave = () => {
     document.querySelector('.hiddenDiv').style.display = 'none'
-  }
+  }*/
 
   render() {
     const counter = this.state.data.length
@@ -97,12 +95,10 @@ export default class App extends React.Component {
 
         <Search value={this.state.searchValue} updateInputValue={this.updateInputValue} updateSearch={this.updateSearch} value={this.state.searchValue} load={this.state.isLoading} />
 
-        {this.state.searchValue.length < 1 && <WelcomeFeedback />}
-        {this.state.searchValue.length > 0 && <Feedback counter={counter} value={this.state.searchValue} state={this.state}/>}
-        
-        <ConditionalButton handleDisplayBlock={this.handleDisplayBlock} handleDisplayList={this.handleDisplayList} gridPositive={this.state.gridPositive} listPositive={this.state.listPositive} />
+        {this.state.searchValue.length < 1 && <WelcomeFeedback handleDisplayBlock={this.handleDisplayBlock} handleDisplayList={this.handleDisplayList} display={this.state.display} />}
+        {this.state.searchValue.length > 0 && <Feedback counter={counter} value={this.state.searchValue} state={this.state} handleDisplayBlock={this.handleDisplayBlock} handleDisplayList={this.handleDisplayList} display={this.state.display} />}
 
-        {this.state.display === 'block' && <ResultsBlocks handlePointerEnter={this.handlePointerEnter} handlePointerLeave={this.handlePointerLeave} data={this.state.data} handleDisplayBlock={this.handleDisplayBlock} handleDisplayList={this.handleDisplayList} filteredData={this.state.filteredData} />}
+        {this.state.display === 'block' && <ResultsBlocks data={this.state.data} handleDisplayBlock={this.handleDisplayBlock} handleDisplayList={this.handleDisplayList} filteredData={this.state.filteredData} />}
         {this.state.display === 'list' && <ResultsList data={this.state.data} handleDisplayBlock={this.handleDisplayBlock} handleDisplayList={this.handleDisplayList} />}
       </div>
     )

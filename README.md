@@ -98,3 +98,4 @@ Pas bien clair. Ce qu'on sait, c'est que le chef voudrait une petite démo et un
 - Navigation _dans_ les dossiers d'un repo (avec les dossiers affichés avant les fichiers à tous les niveaux hiérarchiques)
 - Prévisualisation des fichiers d'un repo (attention, base64)
 - Navigation _au clavier_ : focus du champ de recherche par lettre `F`, navigation dans les résultats par flèches directionnelles, affichage des détails du repo sélectionnée avec `Enter`, et soyons fous, carrément dans les dossiers d'un repo !
+"# github-api-results" 
