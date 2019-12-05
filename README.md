@@ -5,6 +5,9 @@ This is a really small project with GitHub's API, and entirely in React JS. No r
 ## To start
 
 ```clone the repo```
+
 ```cd in your repo location```
+
 ```npm install```
+
 ```npm start```
